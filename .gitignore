@@ -1,0 +1,33 @@
+# CommandCode taste/learning data
+.commandcode/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv
+venv/
+venv312/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Knowledge updater cache
+tools/.url_cache.json
+tools/crawl_log.txt
+
+# Output files (auto-generated)
+output/

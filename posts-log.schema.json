@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Affiliate Content Posts Log",
+  "description": "Log of every affiliate content post made by the affiliate-content-creator skill",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "post_id",
+      "timestamp",
+      "product_name",
+      "platform",
+      "hook_variant_used",
+      "caption",
+      "hashtags",
+      "affiliate_url",
+      "post_status",
+      "niche",
+      "commission_rate",
+      "quality_gate_version"
+    ],
+    "properties": {
+      "post_id": {
+        "type": "string",
+        "format": "uuid",
+        "description": "UUID v4 uniquely identifying this post"
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "ISO 8601 timestamp when the post was created/logged"
+      },
+      "product_name": {
+        "type": "string",
+        "description": "Name of the affiliate product posted"
+      },
+      "platform": {
+        "type": "string",
+        "enum": ["tiktok", "facebook", "both"],
+        "description": "Platform(s) the content was posted to"
+      },
+      "post_url": {
+        "type": ["string", "null"],
+        "format": "uri",
+        "description": "URL of the published post (null if manual-post-required)"
+      },
+      "hook_variant_used": {
+        "type": "string",
+        "description": "Label of the A/B hook variant selected for the post (e.g. 'Variant C (Aspiration/Transformation)')"
+      },
+      "caption": {
+        "type": "string",
+        "description": "Full caption text used in the post"
+      },
+      "hashtags": {
+        "type": "array",
+        "items": { "type": "string" },
+        "minItems": 1,
+        "description": "Hashtags used in the post (first should be #ad)"
+      },
+      "affiliate_url": {
+        "type": "string",
+        "format": "uri",
+        "description": "Affiliate link URL included in the post or bio"
+      },
+      "scheduled_time": {
+        "type": ["string", "null"],
+        "format": "date-time",
+        "description": "ISO 8601 scheduled publish time (null if posted immediately)"
+      },
+      "post_status": {
+        "type": "string",
+        "enum": ["posted", "scheduled", "manual-post-required"],
+        "description": "Current status of the post"
+      },
+      "niche": {
+        "type": "string",
+        "description": "Niche keyword the user provided (or agent selected)"
+      },
+      "commission_rate": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "Estimated commission rate percentage"
+      },
+      "quality_gate_version": {
+        "type": "string",
+        "pattern": "^\\d+\\.\\d+$",
+        "description": "Version of the quality gate checks applied before posting"
+      }
+    }
+  }
+}
